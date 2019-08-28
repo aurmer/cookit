@@ -1,4 +1,4 @@
-const edemamData = {
+const edemamResult = {
   "q" : "chicken",
   "from" : 0,
   "to" : 9,
