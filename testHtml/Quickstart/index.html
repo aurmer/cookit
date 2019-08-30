@@ -6,17 +6,19 @@
   </head>
   <body>
     <p>Google Calendar API Quickstart</p>
-
+    <iframe src="https://calendar.google.com/calendar/embed?src=taylorblocker%40gmail.com&ctz=America%2FChicago" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" style="display: none;">Authorize</button>
     <button id="signout_button" style="display: none;">Sign Out</button>
-
+    
+    
+    
     <pre id="content" style="white-space: pre-wrap;"></pre>
-
+    
     <script type="text/javascript">
       // Client ID and API key from the Developer Console
-      var CLIENT_ID = "1033286819017-j2og68i2si8o8ae0mfctnfbloukch1fm.apps.googleusercontent.com";
-      var API_KEY = "AIzaSyDe-wwfL56lTyG8CBHhlmGEHlsiK2NWwW0";
+      var CLIENT_ID = "136857648617-a6unm1i9rbdvdeqcavgt1aidaq3l3m9u.apps.googleusercontent.com";
+      var API_KEY = "AIzaSyBhUyyMHgroHVKL6TylIg82gxzGIKwdnjY";
 
       // Array of API discovery doc URLs for APIs used by the quickstart
       var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
@@ -34,6 +36,7 @@
       function handleClientLoad() {
         gapi.load('client:auth2', initClient);
       }
+      // test for event
 
       /**
        *  Initializes the API client library and sets up sign-in state
@@ -132,7 +135,7 @@
       }
 
     </script>
-
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
