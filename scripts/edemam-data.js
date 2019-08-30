@@ -1,3 +1,105 @@
+
+// List of search parameters for recipes
+// https://developer.edamam.com/edamam-docs-recipe-api
+
+const edamamEnumData = {
+  diets: {
+    balanced: {
+      webText: "Balanced",
+      variable: "balanced",
+      desc: "Protein/Fat/Carb values in 15/35/50 ratio"
+    },
+    highFiber: {
+      webText: "High-Fiber",
+      parameter: "high-fiber",
+      desc: "More than 5g fiber per serving"
+    },
+    highProtein: {
+      webText: "High-Protein",
+      parameter: "high-protein",
+      desc: "More than 50% of total calories from proteins"
+    },
+    lowCarb: {
+      webText: "Low-Carb",
+      parameter: "low-carb",
+      desc: "Less than 20% of total calories from carbs"
+    },
+    lowFat: {
+      webText: "Low-Fat",
+      parameter: "low-fat",
+      desc: "Less than 15% of total calories from fat"
+    },
+    lowSodium: {
+      webText: "Low-Sodium",
+      parameter: "low-sodium",
+      desc: "Less than 140mg Na per serving"
+    }
+  },
+  heathLabels: {
+    "dairy-free": {
+    	"webname": "Dairy",
+    	"parameter": "dairy-free",
+    	"desc": "No dairy; no lactose"
+    },
+    "egg-free": {
+    	"webname": "Eggs",
+    	"parameter": "egg-free",
+    	"desc": "No eggs or products containing eggs"
+    },
+    "gluten-free": {
+    	"webname": "Gluten",
+    	"parameter": "gluten-free",
+    	"desc": "No ingredients containing gluten"
+    },
+    "peanut-free": {
+    	"webname": "Peanuts",
+    	"parameter": "peanut-free",
+    	"desc": "No peanuts or products containing peanuts"
+    },
+    "tree-nut-free": {
+    	"webname": "Tree Nuts",
+    	"parameter": "tree-nut-free",
+    	"desc": "No tree nuts or products containing tree nuts"
+    },
+    "vegetarian": {
+    	"webname": "Vegetarian",
+    	"parameter": "vegetarian",
+    	"desc": "No meat, poultry, or fish"
+    }
+  },
+  mealTypes: [
+    "Breakfast",
+    "Lunch",
+    "Dinner",
+    "Snack"
+  ],
+  dishTypes: [
+    "Desserts",
+    "Main course",
+    "Salad",
+    "Sandwiches",
+    "Side dish",
+    "Soup",
+    "Starter",
+  ],
+  cuisineTypes: [
+    "American",
+    "Asian",
+    "Chinese",
+    "French",
+    "Indian",
+    "Italian",
+    "Mediterranean",
+    "Mexican",
+  ]
+}
+
+/*
+Health\t([^\t]*)\t([^\t]*)\t([^\t\n]*)\n^
+"$2": {\n\t"webname": "$1",\n\t"parameter": "$2",\n\t"desc": "$3"\n},\n
+*/
+
+
 const edemamResult = {
   "q" : "chicken",
   "from" : 0,
