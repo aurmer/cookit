@@ -12,3 +12,4 @@ function initializePage() {
 function renderSingleRecipeCard(element) {
   return `<div class="recipe-card"><a href="${element.recipe.shareAs}"><img src="${element.recipe.image}"></a></div>`
 }
+

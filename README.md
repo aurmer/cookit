@@ -10,7 +10,7 @@ This is our Phase 1 final project. The assignment is to utilize multiple APIs to
 
 -  Taylor Blocker
 
-   Google Calender API
+   Google Calender API/Advanced Search
 
 -  Robert Foreman
 
