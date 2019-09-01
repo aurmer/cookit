@@ -4,38 +4,48 @@
 
 const edamamEnumData = {
   diets: {
+    "_blank": {
+      webname: "",
+      parameter: "",
+      desc: ""
+    },
     balanced: {
-      webText: "Balanced",
-      variable: "balanced",
+      webname: "Balanced",
+      parameter: "balanced",
       desc: "Protein/Fat/Carb values in 15/35/50 ratio"
     },
     highFiber: {
-      webText: "High-Fiber",
+      webname: "High-Fiber",
       parameter: "high-fiber",
       desc: "More than 5g fiber per serving"
     },
     highProtein: {
-      webText: "High-Protein",
+      webname: "High-Protein",
       parameter: "high-protein",
       desc: "More than 50% of total calories from proteins"
     },
     lowCarb: {
-      webText: "Low-Carb",
+      webname: "Low-Carb",
       parameter: "low-carb",
       desc: "Less than 20% of total calories from carbs"
     },
     lowFat: {
-      webText: "Low-Fat",
+      webname: "Low-Fat",
       parameter: "low-fat",
       desc: "Less than 15% of total calories from fat"
     },
     lowSodium: {
-      webText: "Low-Sodium",
+      webname: "Low-Sodium",
       parameter: "low-sodium",
       desc: "Less than 140mg Na per serving"
     }
   },
   heathLabels: {
+    "_blank": {
+      webname: "",
+      variable: "",
+      desc: ""
+    },
     "dairy-free": {
     	"webname": "Dairy",
     	"parameter": "dairy-free",
@@ -68,12 +78,14 @@ const edamamEnumData = {
     }
   },
   mealTypes: [
+    "",
     "Breakfast",
     "Lunch",
     "Dinner",
     "Snack"
   ],
   dishTypes: [
+    "",
     "Desserts",
     "Main course",
     "Salad",
@@ -83,6 +95,7 @@ const edamamEnumData = {
     "Starter",
   ],
   cuisineTypes: [
+    "",
     "American",
     "Asian",
     "Chinese",
@@ -94,13 +107,29 @@ const edamamEnumData = {
   ]
 }
 
+function sendEdamamRequest() {
+  const searchForm = document.querySelector('#search-form')
+  const minTime = searchForm.querySelector('#minTime')
+  const maxTime = searchForm.querySelector('#maxTime')
+  const minCal = searchForm.querySelector('#minCal')
+  const maxCal = searchForm.querySelector('#maxCal')
+  const cuisineType = searchForm.querySelector('#cuisineType')
+  const dishType = searchForm.querySelector('#dishType')
+  const mealType = searchForm.querySelector('#mealType')
+  const heathLabel = searchForm.querySelector('#heathLabel')
+  const diet = searchForm.querySelector('#diet')
+  const maxIngred = searchForm.querySelector('#maxIngred')
+
+  
+}
+
 /*
 Health\t([^\t]*)\t([^\t]*)\t([^\t\n]*)\n^
 "$2": {\n\t"webname": "$1",\n\t"parameter": "$2",\n\t"desc": "$3"\n},\n
 */
 
 
-const edemamResult = {
+const edamamResult = {
   "q" : "chicken",
   "from" : 0,
   "to" : 9,
