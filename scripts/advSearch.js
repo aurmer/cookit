@@ -6,12 +6,10 @@ function getById(id){return document.getElementById(id);};
 
 function initializePage(){
 console.dir(edemamResult)
-
 let recipesHTML = edemamResult.hits.map(renderSingleRecipeCard).join('')
-
 document.querySelector('#recipes-container').innerHTML = recipesHTML
-
 }
+
 //Press the test button to add all items to an array
 //Array items would be used to search for matching parameters and filter the results.
 //I think this would be tied to the "Search" button on the search bar so it knows to check for items in the array to limit the search. 
@@ -37,7 +35,9 @@ var addAdvSearchPar = function(){
         console.dir($(this).val())
     });
 }
-
+//create a variable that points straight to the recipe object. 
 function renderSingleRecipeCard(element) {
-return `<div class="recipe-card"><a href="${element.recipe.shareAs}"><img src="${element.recipe.image}"></a></div>`
+let recipeID =  element.recipe.uri.split("_").pop();
+
+return `<div class="recipe-card" data-recipeID="${recipeID}"><a href="${element.recipe.shareAs}"><img src="${element.recipe.image}"></a></div>`
 }
