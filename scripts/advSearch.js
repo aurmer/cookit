@@ -11,41 +11,32 @@ let recipesHTML = edemamResult.hits.map(renderSingleRecipeCard).join('')
 
 document.querySelector('#recipes-container').innerHTML = recipesHTML
 
-function getById(id)
-    {
-        return document.getElementById(id);
-    }
 }
-
+//Press the test button to add all items to an array
+//Array items would be used to search for matching parameters and filter the results.
+//I think this would be tied to the "Search" button on the search bar so it knows to check for items in the array to limit the search. 
 document.addEventListener('click', function(event){
     let targetEl = event.target;    
     if (targetEl.id === "test-button") {
         addAdvSearchPar()
         console.log("you pressed the test button")
+        console.dir(advSearchParameters)
     }
-
 });
 
-function  inputSearchResults(){
-    
-    document.addEventListener('click', function(event){
-        let targetEl = event.target;    
-        addAdvSearchPar(targetEl)
-    });
-}
+//Array to hold parameters for search
 
 advSearchParameters =[];
 
-function addAdvSearchPar (element){
-    if ($('input:checked')){
-        advSearchParameters.push(element.value)
-        
-    }
+//Function to add parameters to array
+//Looks for all boxes that are checked and inputs value in array.
 
-    console.dir(advSearchParameters)
+var addAdvSearchPar = function(){
+    $('input:checked').each(function(){
+        advSearchParameters.push($(this).val())
+        console.dir($(this).val())
+    });
 }
-
-
 
 function renderSingleRecipeCard(element) {
 return `<div class="recipe-card"><a href="${element.recipe.shareAs}"><img src="${element.recipe.image}"></a></div>`
