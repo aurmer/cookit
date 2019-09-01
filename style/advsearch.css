@@ -1,0 +1,18 @@
+#content
+{
+    border: 1px solid gray;
+}
+
+#adv-search-cont
+{
+    display: flex;
+    border: 1px solid gray;
+}
+
+#adv-options
+{
+    display: flex;
+    border: 1px solid gray;
+    flex-direction: column;
+    flex: 1;
+}
