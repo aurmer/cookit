@@ -8,6 +8,14 @@ function initializePage(){
 
     console.dir(edemamResult)
 
+    var calorieSlider = getById("calorie-range");
+    var calorieOutput = getById("calorie-output");
+    calorieOutput.innerHTML = calorieSlider.value;
+
+    calorieSlider.oninput = function() {
+    calorieOutput.innerHTML = this.value;
+    }
+
     let recipesHTML = edemamResult.hits.map(renderSingleRecipeCard).join('')
 
     document.querySelector('#recipes-container').innerHTML = recipesHTML
@@ -45,7 +53,13 @@ var addAdvSearchPar = function(){
         advSearchParameters.push($(this).val());
         console.dir($(this).val());
     });
+    $('#calorie-range').each(function(){
+        advSearchParameters.push($(this).val());
+    })
+    
 }
+
+
 //create a variable that points straight to the recipe object. 
 
 function renderSingleRecipeCard(element) {

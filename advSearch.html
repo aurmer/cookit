@@ -58,59 +58,60 @@
                                             </a>
                                         </p>
                                     </div>
-                        <button id="test-button">Apply Filter</button>
-                            <div id="adv-search-content">
-                                    <!-- <div id="adv-options" class="calorie-col">
-                                        <input type="checkbox" id="adv-opt-check" value="" id="">0 to 1k Calories<br>
-                                        <input type="checkbox" id="adv-opt-check" value="" id="">1k to 2k Calories<br>
-                                        <input type="checkbox" id="adv-opt-check" value="" id="">2k to 3k Calories<br>
-                                        <input type="checkbox" id="adv-opt-check" value="" id="">3k to 4k Calories<br>
-                                        <input type="checkbox" id="adv-opt-check" value="" id="">4k to 5k Calories<br>
-                                    </div> -->
-                                    <div id="adv-options" class="diets-col">
-                                        <input type="checkbox" id="adv-opt-check" value="balanced" class="balanced-check">Balanced<br>
-                                        <input type="checkbox" id="adv-opt-check" value="highFiber" class="high-fiber-check">High Fiber<br>
-                                        <input type="checkbox" id="adv-opt-check" value="highProtein" class="high-protein-check">High Protein<br>
-                                        <input type="checkbox" id="adv-opt-check" value="lowCarb" class="low-carb-check">Low Carb<br>
-                                        <input type="checkbox" id="adv-opt-check" value="lowFat" class="low-fat-check">Low Fat<br>
-                                        <input type="checkbox" id="adv-opt-check" value="lowSodium" class="low-sodium-check">Low Sodium<br>
-                                    </div>
-                                    <div id="adv-options" class="health-labels-col">
-                                        <input type="checkbox" id="adv-opt-check" value="dairy-free" class="dairy-free-check">Dairy Free<br>
-                                        <input type="checkbox" id="adv-opt-check" value="egg-free" class="egg-free-check">Egg Free<br>
-                                        <input type="checkbox" id="adv-opt-check" value="gluten-free" class="gluten-free-check">Gluten Free<br>
-                                        <input type="checkbox" id="adv-opt-check" value="peanut-free" class="peanut-free-check">Peanut Free<br>
-                                        <input type="checkbox" id="adv-opt-check" value="tree-nut-free" class="tree-nut-free-check">Tree Nut Free<br>
-                                        <input type="checkbox" id="adv-opt-check" value="vegetarian" class="vegetarian-check">Vegetarian<br>
-                                    </div>
-                                    <div id="adv-options" class="meal-type-col">
-                                        <input type="checkbox" id="adv-opt-check" value="Breakfast" class="breakfast-check">Breakfast<br>
-                                        <input type="checkbox" id="adv-opt-check" value="Lunch" class="lunch-check">Lunch<br>
-                                        <input type="checkbox" id="adv-opt-check" value="Dinner" class="dinner-check">Dinner<br>
-                                        <input type="checkbox" id="adv-opt-check" value="Snack" class="snack-check">Snack<br>
-                                    </div>
-                                    <div id="adv-options" class="dish-type-col">
-                                        <input type="checkbox" id="adv-opt-check" value="Starter" class="starter-check">Starter<br>
-                                        <input type="checkbox" id="adv-opt-check" value="Soup" class="soup-check">Soup<br>
-                                        <input type="checkbox" id="adv-opt-check" value="Salad" class="salad-check">Salad<br>
-                                        <input type="checkbox" id="adv-opt-check" value="Main course" class="main-course-check">Main Course<br>
-                                        <input type="checkbox" id="adv-opt-check" value="Side dish" class="side-dish-check">Side Dish<br>
-                                        <input type="checkbox" id="adv-opt-check" value="Sandwiches" class="sandwiches-check">Sandwiches<br>
-                                        <input type="checkbox" id="adv-opt-check" value="Dessert" class="dessert-check">Dessert<br>
-                                    </div>
-                                    <div id="adv-options" class="cuisine-type-col">
-                                        <input type="checkbox" id="adv-opt-check" value="American" class="american-check">American<br>
-                                        <input type="checkbox" id="adv-opt-check" value="Asian" class="asian-check">Asian<br>
-                                        <input type="checkbox" id="adv-opt-check" value="Chinese" class="chinese-check">Chinese<br>
-                                        <input type="checkbox" id="adv-opt-check" value="French" class="french-check">French<br>
-                                        <input type="checkbox" id="adv-opt-check" value="India" class="indian-check">Indian<br>
-                                        <input type="checkbox" id="adv-opt-check" value="Mediterranean" class="medit-check">Mediterranean<br>
-                                        <input type="checkbox" id="adv-opt-check" value="Mexican" class="mexican-check">Mexican<br>
-                                    </div>
+            <button id="test-button">Apply Filter</button>
+                <div id="adv-search-content">
+                        <div id="adv-options" class="calorie-col">
+
+                            <div class="sliderContainer">
+                                <input type="range" min="0" max="5000" value="" class="slider" id="calorie-range" orient="vertical">
+                                <p>Calories:<div id="calorie-output"></div></p>
                                 </div>
-                            </div>
+                            
+                        </div>
+                        <div id="adv-options" class="diets-col">
+                            <input type="checkbox" id="adv-opt-check" value="balanced" class="balanced-check">Balanced<br>
+                            <input type="checkbox" id="adv-opt-check" value="highFiber" class="high-fiber-check">High Fiber<br>
+                            <input type="checkbox" id="adv-opt-check" value="highProtein" class="high-protein-check">High Protein<br>
+                            <input type="checkbox" id="adv-opt-check" value="lowCarb" class="low-carb-check">Low Carb<br>
+                            <input type="checkbox" id="adv-opt-check" value="lowFat" class="low-fat-check">Low Fat<br>
+                            <input type="checkbox" id="adv-opt-check" value="lowSodium" class="low-sodium-check">Low Sodium<br>
+                        </div>
+                        <div id="adv-options" class="health-labels-col">
+                            <input type="checkbox" id="adv-opt-check" value="dairy-free" class="dairy-free-check">Dairy Free<br>
+                            <input type="checkbox" id="adv-opt-check" value="egg-free" class="egg-free-check">Egg Free<br>
+                            <input type="checkbox" id="adv-opt-check" value="gluten-free" class="gluten-free-check">Gluten Free<br>
+                            <input type="checkbox" id="adv-opt-check" value="peanut-free" class="peanut-free-check">Peanut Free<br>
+                            <input type="checkbox" id="adv-opt-check" value="tree-nut-free" class="tree-nut-free-check">Tree Nut Free<br>
+                            <input type="checkbox" id="adv-opt-check" value="vegetarian" class="vegetarian-check">Vegetarian<br>
+                        </div>
+                        <div id="adv-options" class="meal-type-col">
+                            <input type="checkbox" id="adv-opt-check" value="Breakfast" class="breakfast-check">Breakfast<br>
+                            <input type="checkbox" id="adv-opt-check" value="Lunch" class="lunch-check">Lunch<br>
+                            <input type="checkbox" id="adv-opt-check" value="Dinner" class="dinner-check">Dinner<br>
+                            <input type="checkbox" id="adv-opt-check" value="Snack" class="snack-check">Snack<br>
+                        </div>
+                        <div id="adv-options" class="dish-type-col">
+                            <input type="checkbox" id="adv-opt-check" value="Starter" class="starter-check">Starter<br>
+                            <input type="checkbox" id="adv-opt-check" value="Soup" class="soup-check">Soup<br>
+                            <input type="checkbox" id="adv-opt-check" value="Salad" class="salad-check">Salad<br>
+                            <input type="checkbox" id="adv-opt-check" value="Main course" class="main-course-check">Main Course<br>
+                            <input type="checkbox" id="adv-opt-check" value="Side dish" class="side-dish-check">Side Dish<br>
+                            <input type="checkbox" id="adv-opt-check" value="Sandwiches" class="sandwiches-check">Sandwiches<br>
+                            <input type="checkbox" id="adv-opt-check" value="Dessert" class="dessert-check">Dessert<br>
+                        </div>
+                        <div id="adv-options" class="cuisine-type-col">
+                            <input type="checkbox" id="adv-opt-check" value="American" class="american-check">American<br>
+                            <input type="checkbox" id="adv-opt-check" value="Asian" class="asian-check">Asian<br>
+                            <input type="checkbox" id="adv-opt-check" value="Chinese" class="chinese-check">Chinese<br>
+                            <input type="checkbox" id="adv-opt-check" value="French" class="french-check">French<br>
+                            <input type="checkbox" id="adv-opt-check" value="India" class="indian-check">Indian<br>
+                            <input type="checkbox" id="adv-opt-check" value="Mediterranean" class="medit-check">Mediterranean<br>
+                            <input type="checkbox" id="adv-opt-check" value="Mexican" class="mexican-check">Mexican<br>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
         
             </section>
             <!-- <script async type="text/javascript" src="../js/bulma.js"></script> -->
