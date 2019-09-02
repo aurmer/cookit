@@ -11,16 +11,3 @@ function getURI (){
     console.log(recipeID)
 }
 
-$("#add-button").click(function(){
-    let recipeIndex = edemamResult.hits.recipe;
-    console.dir(recipeIndex);
-    recipeIndex.find($(this).find(recipeID))
-
-    if (recipeID) {
-        
-    }
-
-    
-    
-
-});
