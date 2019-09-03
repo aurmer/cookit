@@ -83,44 +83,70 @@ const edamamEnumData = {
     "Lunch",
     "Dinner",
     "Snack"
-  ],
-  dishTypes: [
-    "",
-    "Desserts",
-    "Main course",
-    "Salad",
-    "Sandwiches",
-    "Side dish",
-    "Soup",
-    "Starter",
-  ],
-  cuisineTypes: [
-    "",
-    "American",
-    "Asian",
-    "Chinese",
-    "French",
-    "Indian",
-    "Italian",
-    "Mediterranean",
-    "Mexican",
   ]
+  //dish type and cuisine aren't supported in unpaid app.
 }
+
+function parseOrReplaceInt(str) {
+  if (typeof str !== "string") {
+    str = this
+  }
+
+  const resultingInt = parseInt(str)
+
+  if( isNaN(str) ) {
+    return 0
+  } else {
+    return parseInt(str)
+  }
+
+
+}
+
+String.prototype.tabParseInt = parseOrReplaceInt
 
 function sendEdamamRequest() {
   const searchForm = document.querySelector('#search-form')
-  const minTime = searchForm.querySelector('#minTime')
-  const maxTime = searchForm.querySelector('#maxTime')
+  const minTime = searchForm.querySelector('#minTime').value.tabParseInt()
+  const maxTime = searchForm.querySelector('#maxTime').value.tabParseInt()
   const minCal = searchForm.querySelector('#minCal')
   const maxCal = searchForm.querySelector('#maxCal')
-  const cuisineType = searchForm.querySelector('#cuisineType')
-  const dishType = searchForm.querySelector('#dishType')
   const mealType = searchForm.querySelector('#mealType')
   const heathLabel = searchForm.querySelector('#heathLabel')
   const diet = searchForm.querySelector('#diet')
   const maxIngred = searchForm.querySelector('#maxIngred')
 
-  
+  let getQuery = ""
+
+
+  if(minTime > 0 || maxTime > 0) {
+    getQuery += "&time=" + printRange(minTime,maxTime)
+  }
+
+  if(minCal > 0 || maxCal > 0) {
+    getQuery += "&calories=" + printRange(minCal,maxCal)
+  }
+
+}
+
+function printRange(min,max) {
+  let out_str = ""
+
+  if(min > 0) {
+    out_str += min
+
+    if(max > 0) {
+      out_str += "-" + max
+    }
+    else {
+      out_str += "%2B"
+    }
+  }
+  else if(max > 0) {
+    out_str += max
+  }
+
+  return out_str
 }
 
 /*
