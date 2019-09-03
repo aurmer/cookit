@@ -74,8 +74,6 @@ function parseIntOrReturnZero(str) {
   } else {
     return parseInt(str)
   }
-
-
 }
 
 String.prototype.parseIntOrReturnZero = parseIntOrReturnZero
@@ -123,8 +121,7 @@ function buildEdamamRequest() {
 }
 
 function sendEdamamRequest() {
-  //let requestURL = buildEdamamRequest()
-  let requestURL = "https://api.edamam.com/search?app_id=f6abb6f3&app_key=f7c310e699facfc88650ff8ad19f04b4&q=chicken"
+  let requestURL = buildEdamamRequest()
 
   let myRequest = $.getJSON({
     url: requestURL,
@@ -133,7 +130,15 @@ function sendEdamamRequest() {
 }
 
 function handleEdamamData(result) {
-  console.dir(result.hits)
+  let recipeArray = extractRecipeArray(result)
+}
+
+function extractRecipeArray(edamamResult) {
+  return edamamResult.hits.map(returnRecipe)
+}
+
+function returnRecipe(element) {
+  return element.recipe
 }
 
 function printRange(min,max) {
@@ -141,7 +146,6 @@ function printRange(min,max) {
 
   if(min > 0) {
     out_str += min
-
     if(max > 0) {
       out_str += "-" + max
     }
