@@ -9,7 +9,12 @@
 
 
 /* body */
-
+.cookit2-height {
+  height: 93vh;
+}
+.top-margin{
+  justify-items: center;
+}
 
 /* input  && button */
 .input, .button{
@@ -17,10 +22,13 @@
 }
 
 
-
-
+/* log in /// sign up */
 
 
 
 
 /* footer */
+.footer {
+  padding: 0;
+  margin-top: 37vh;
+}
