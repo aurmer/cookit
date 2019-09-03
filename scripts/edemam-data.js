@@ -1,55 +1,42 @@
+const EDAMAM_APP_ID = "f6abb6f3"
+const EDAMAM_APP_KEY = "f7c310e699facfc88650ff8ad19f04b4"
 
 // List of search parameters for recipes
 // https://developer.edamam.com/edamam-docs-recipe-api
 
 const edamamEnumData = {
   diets: {
+    "_blank": {
+      webname: "",
+      parameter: "",
+      desc: ""
+    },
     balanced: {
-      webText: "Balanced",
-      variable: "balanced",
+      webname: "Balanced",
+      parameter: "balanced",
       desc: "Protein/Fat/Carb values in 15/35/50 ratio"
     },
-    highFiber: {
-      webText: "High-Fiber",
-      parameter: "high-fiber",
-      desc: "More than 5g fiber per serving"
-    },
     highProtein: {
-      webText: "High-Protein",
+      webname: "High-Protein",
       parameter: "high-protein",
       desc: "More than 50% of total calories from proteins"
     },
     lowCarb: {
-      webText: "Low-Carb",
+      webname: "Low-Carb",
       parameter: "low-carb",
       desc: "Less than 20% of total calories from carbs"
     },
     lowFat: {
-      webText: "Low-Fat",
+      webname: "Low-Fat",
       parameter: "low-fat",
       desc: "Less than 15% of total calories from fat"
-    },
-    lowSodium: {
-      webText: "Low-Sodium",
-      parameter: "low-sodium",
-      desc: "Less than 140mg Na per serving"
     }
   },
   heathLabels: {
-    "dairy-free": {
-    	"webname": "Dairy",
-    	"parameter": "dairy-free",
-    	"desc": "No dairy; no lactose"
-    },
-    "egg-free": {
-    	"webname": "Eggs",
-    	"parameter": "egg-free",
-    	"desc": "No eggs or products containing eggs"
-    },
-    "gluten-free": {
-    	"webname": "Gluten",
-    	"parameter": "gluten-free",
-    	"desc": "No ingredients containing gluten"
+    "_blank": {
+      webname: "",
+      variable: "",
+      desc: ""
     },
     "peanut-free": {
     	"webname": "Peanuts",
@@ -68,39 +55,116 @@ const edamamEnumData = {
     }
   },
   mealTypes: [
+    "",
     "Breakfast",
     "Lunch",
     "Dinner",
     "Snack"
-  ],
-  dishTypes: [
-    "Desserts",
-    "Main course",
-    "Salad",
-    "Sandwiches",
-    "Side dish",
-    "Soup",
-    "Starter",
-  ],
-  cuisineTypes: [
-    "American",
-    "Asian",
-    "Chinese",
-    "French",
-    "Indian",
-    "Italian",
-    "Mediterranean",
-    "Mexican",
   ]
+  //dish type and cuisine aren't supported in unpaid app.
 }
 
-/*
-Health\t([^\t]*)\t([^\t]*)\t([^\t\n]*)\n^
-"$2": {\n\t"webname": "$1",\n\t"parameter": "$2",\n\t"desc": "$3"\n},\n
-*/
+function parseIntOrReturnZero(str) {
+  if (typeof str !== "string") {
+    str = this
+  }
+
+  if( isNaN(str) ) {
+    return 0
+  } else {
+    return parseInt(str)
+  }
+}
+
+String.prototype.parseIntOrReturnZero = parseIntOrReturnZero
+
+function buildEdamamRequest() {
+  const searchForm = document.querySelector('#search-form')
+  const minTime = searchForm.querySelector('#minTime').value.parseIntOrReturnZero()
+  const maxTime = searchForm.querySelector('#maxTime').value.parseIntOrReturnZero()
+  const minCal = searchForm.querySelector('#minCal').value.parseIntOrReturnZero()
+  const maxCal = searchForm.querySelector('#maxCal').value.parseIntOrReturnZero()
+  const maxIngred = searchForm.querySelector('#maxIngred').value.parseIntOrReturnZero()
+  const mealType = searchForm.querySelector('#mealType').value
+  const heathLabel = searchForm.querySelector('#heathLabel').value
+  const diet = searchForm.querySelector('#diet').value
+
+  let url = "https://api.edamam.com/search"
+  let getQuery = `?app_key=${EDAMAM_APP_KEY}&app_id=${EDAMAM_APP_ID}`
 
 
-const edemamResult = {
+  if(minTime > 0 || maxTime > 0) {
+    getQuery += "&time=" + printRange(minTime,maxTime)
+  }
+
+  if(minCal > 0 || maxCal > 0) {
+    getQuery += "&calories=" + printRange(minCal,maxCal)
+  }
+
+  if(maxIngred > 0) {
+    getQuery += `&ingr=${maxIngred}`
+  }
+
+  if(mealType.length > 0) {
+    getQuery += `&mealType=${mealType}`
+  }
+
+  if(healthLabel.length > 0) {
+    getQuery += `&health=${healthLabel}`
+  }
+
+  if(diet.length > 0) {
+    getQuery += `&diet=${diet}`
+  }
+
+  return url + getQuery
+}
+
+function sendEdamamRequest() {
+  let requestURL = buildEdamamRequest()
+
+  let myRequest = $.getJSON({
+    url: requestURL,
+    success: handleEdamamData
+  })
+}
+
+function handleEdamamData(result) {
+  let recipeArray = extractRecipeArray(result)
+}
+
+function extractRecipeArray(edamamResult) {
+  return edamamResult.hits.map(returnRecipe)
+}
+
+function returnRecipe(element) {
+  return element.recipe
+}
+
+function printRange(min,max) {
+  let out_str = ""
+
+  if(min > 0) {
+    out_str += min
+    if(max > 0) {
+      out_str += "-" + max
+    }
+    else {
+      out_str += "%2B"
+    }
+  }
+  else if(max > 0) {
+    out_str += max
+  }
+
+  return out_str
+}
+
+function receiveEdamamData() {
+
+}
+
+const edamamResult = {
   "q" : "chicken",
   "from" : 0,
   "to" : 9,

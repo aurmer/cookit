@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',initializePage)
 
 function initializePage() {
 
-  let recipesHTML = edemamResult.hits.map(renderSingleRecipeCard).join('')
+  let recipesHTML = edamamResult.hits.map(renderSingleRecipeCard).join('')
 
   document.querySelector('#recipes-container').innerHTML = recipesHTML
 }
