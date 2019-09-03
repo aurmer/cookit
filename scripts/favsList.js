@@ -10,3 +10,4 @@ function getURI (){
     let recipeID =  edemamResult.uri.split("_").shift();
     console.log(recipeID)
 }
+
