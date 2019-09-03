@@ -30,7 +30,7 @@ function initializePage(){
 
 document.addEventListener('click', function(event){
     let targetEl = event.target;    
-    if (targetEl.id === "test-button") {
+    if (targetEl.id === "search-button") {
         addAdvSearchPar();
         console.dir(targetEl)
         console.dir(advSearchParameters);
@@ -43,8 +43,8 @@ document.addEventListener('click', function(event){
     if (targetEl.id === 'enable-calorie-count'){
         enableCalorieCount()
     }
-
 });
+
 
 function enableCalorieCount(){
     let slider = getById('calorie-range')
