@@ -32,6 +32,7 @@ document.addEventListener('click', function(event){
     let targetEl = event.target;    
     if (targetEl.id === "test-button") {
         addAdvSearchPar();
+        console.dir(targetEl)
         console.dir(advSearchParameters);
     }
     if (targetEl.id === 'add-button') {
@@ -69,6 +70,7 @@ function enableCalorieCount(){
 
 
 //Array to hold parameters for search
+//**** need to create a function to clear this array or set it as undefined after "closing" the advanced search section****/
 
 advSearchParameters =[];
 
