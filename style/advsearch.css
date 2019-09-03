@@ -19,9 +19,9 @@
 
 .slider
 {
+  display: flex;
     -webkit-appearance: slider-vertical;
-    margin: 10% 0%;
-    height:100%;
+    margin: 17% 0%;
 }
 
 

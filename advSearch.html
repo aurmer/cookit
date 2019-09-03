@@ -63,9 +63,12 @@
                         <div id="adv-options" class="calorie-col">
 
                             <div class="sliderContainer">
-                                <input type="range" min="0" max="5000" value="" class="slider" id="calorie-range" orient="vertical">
-                                <p>Calories:<div id="calorie-output"></div></p>
-                                </div>
+                                <input disabled= "true" type="range" min="0" max="5000" value="0" class="slider" id="calorie-range" orient="vertical">
+                                
+                                <div id="calorie-output">Calories:</div>
+                                
+                                <input display="none" type="button" id="enable-calorie-count" value="Enable Calorie Count">
+                            </div>
                             
                         </div>
                         <div id="adv-options" class="diets-col">

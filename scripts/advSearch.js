@@ -10,11 +10,12 @@ function initializePage(){
 
     var calorieSlider = getById("calorie-range");
     var calorieOutput = getById("calorie-output");
-    calorieOutput.innerHTML = calorieSlider.value;
+    calorieOutput.innerHTML = 'Calories: ' + calorieSlider.value;
 
     calorieSlider.oninput = function() {
-    calorieOutput.innerHTML = this.value;
+    calorieOutput.innerHTML = 'Calories: ' + this.value;
     }
+    
 
     let recipesHTML = edemamResult.hits.map(renderSingleRecipeCard).join('')
 
@@ -31,15 +32,41 @@ document.addEventListener('click', function(event){
     let targetEl = event.target;    
     if (targetEl.id === "test-button") {
         addAdvSearchPar();
-        console.log("you pressed the test button");
         console.dir(advSearchParameters);
     }
     if (targetEl.id === 'add-button') {
-        console.log(targetEl)
         let recipeID = $(targetEl).data("recipeid")
         saveToFavorites(recipeID);
-        console.log('you clicked the add button');       }
+        console.log('you clicked the add button');
+    }
+    if (targetEl.id === 'enable-calorie-count'){
+        enableCalorieCount()
+    }
+
 });
+
+function enableCalorieCount(){
+    let slider = getById('calorie-range')
+    let button = getById('enable-calorie-count')
+    let output = getById('calorie-output')
+    console.log(slider)
+    if(slider.disabled === true){
+        console.log('slider is enabled')
+        slider.disabled = false;
+        slider.value = 2500
+        output.innerHTML = 'Calories: ' + slider.value;
+        button.value = "Disable Calorie Count"
+
+    } else if(slider.disabled === false){
+        console.log('slider is disabled')
+        slider.disabled = true;
+        slider.value = 0;
+        button.value = "Enable Calorie Count"
+        output.innerHTML = 'Calories: ' + slider.value;
+        console.log(slider.value)
+    }
+}
+
 
 //Array to hold parameters for search
 
@@ -58,6 +85,8 @@ var addAdvSearchPar = function(){
     })
     
 }
+
+
 
 
 //create a variable that points straight to the recipe object. 
