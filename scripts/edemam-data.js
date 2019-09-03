@@ -1,3 +1,5 @@
+const EDAMAM_APP_ID = "f6abb6f3"
+const EDAMAM_APP_KEY = "f7c310e699facfc88650ff8ad19f04b4"
 
 // List of search parameters for recipes
 // https://developer.edamam.com/edamam-docs-recipe-api
@@ -14,11 +16,6 @@ const edamamEnumData = {
       parameter: "balanced",
       desc: "Protein/Fat/Carb values in 15/35/50 ratio"
     },
-    highFiber: {
-      webname: "High-Fiber",
-      parameter: "high-fiber",
-      desc: "More than 5g fiber per serving"
-    },
     highProtein: {
       webname: "High-Protein",
       parameter: "high-protein",
@@ -33,11 +30,6 @@ const edamamEnumData = {
       webname: "Low-Fat",
       parameter: "low-fat",
       desc: "Less than 15% of total calories from fat"
-    },
-    lowSodium: {
-      webname: "Low-Sodium",
-      parameter: "low-sodium",
-      desc: "Less than 140mg Na per serving"
     }
   },
   heathLabels: {
@@ -45,21 +37,6 @@ const edamamEnumData = {
       webname: "",
       variable: "",
       desc: ""
-    },
-    "dairy-free": {
-    	"webname": "Dairy",
-    	"parameter": "dairy-free",
-    	"desc": "No dairy; no lactose"
-    },
-    "egg-free": {
-    	"webname": "Eggs",
-    	"parameter": "egg-free",
-    	"desc": "No eggs or products containing eggs"
-    },
-    "gluten-free": {
-    	"webname": "Gluten",
-    	"parameter": "gluten-free",
-    	"desc": "No ingredients containing gluten"
     },
     "peanut-free": {
     	"webname": "Peanuts",
@@ -87,12 +64,10 @@ const edamamEnumData = {
   //dish type and cuisine aren't supported in unpaid app.
 }
 
-function parseOrReplaceInt(str) {
+function parseIntOrReturnZero(str) {
   if (typeof str !== "string") {
     str = this
   }
-
-  const resultingInt = parseInt(str)
 
   if( isNaN(str) ) {
     return 0
@@ -103,20 +78,21 @@ function parseOrReplaceInt(str) {
 
 }
 
-String.prototype.tabParseInt = parseOrReplaceInt
+String.prototype.parseIntOrReturnZero = parseIntOrReturnZero
 
-function sendEdamamRequest() {
+function buildEdamamRequest() {
   const searchForm = document.querySelector('#search-form')
-  const minTime = searchForm.querySelector('#minTime').value.tabParseInt()
-  const maxTime = searchForm.querySelector('#maxTime').value.tabParseInt()
-  const minCal = searchForm.querySelector('#minCal')
-  const maxCal = searchForm.querySelector('#maxCal')
-  const mealType = searchForm.querySelector('#mealType')
-  const heathLabel = searchForm.querySelector('#heathLabel')
-  const diet = searchForm.querySelector('#diet')
-  const maxIngred = searchForm.querySelector('#maxIngred')
+  const minTime = searchForm.querySelector('#minTime').value.parseIntOrReturnZero()
+  const maxTime = searchForm.querySelector('#maxTime').value.parseIntOrReturnZero()
+  const minCal = searchForm.querySelector('#minCal').value.parseIntOrReturnZero()
+  const maxCal = searchForm.querySelector('#maxCal').value.parseIntOrReturnZero()
+  const maxIngred = searchForm.querySelector('#maxIngred').value.parseIntOrReturnZero()
+  const mealType = searchForm.querySelector('#mealType').value
+  const heathLabel = searchForm.querySelector('#heathLabel').value
+  const diet = searchForm.querySelector('#diet').value
 
-  let getQuery = ""
+  let url = "https://api.edamam.com/search"
+  let getQuery = `?app_key=${EDAMAM_APP_KEY}&app_id=${EDAMAM_APP_ID}`
 
 
   if(minTime > 0 || maxTime > 0) {
@@ -127,6 +103,37 @@ function sendEdamamRequest() {
     getQuery += "&calories=" + printRange(minCal,maxCal)
   }
 
+  if(maxIngred > 0) {
+    getQuery += `&ingr=${maxIngred}`
+  }
+
+  if(mealType.length > 0) {
+    getQuery += `&mealType=${mealType}`
+  }
+
+  if(healthLabel.length > 0) {
+    getQuery += `&health=${healthLabel}`
+  }
+
+  if(diet.length > 0) {
+    getQuery += `&diet=${diet}`
+  }
+
+  return url + getQuery
+}
+
+function sendEdamamRequest() {
+  //let requestURL = buildEdamamRequest()
+  let requestURL = "https://api.edamam.com/search?app_id=f6abb6f3&app_key=f7c310e699facfc88650ff8ad19f04b4&q=chicken"
+
+  let myRequest = $.getJSON({
+    url: requestURL,
+    success: handleEdamamData
+  })
+}
+
+function handleEdamamData(result) {
+  console.dir(result.hits)
 }
 
 function printRange(min,max) {
@@ -149,11 +156,9 @@ function printRange(min,max) {
   return out_str
 }
 
-/*
-Health\t([^\t]*)\t([^\t]*)\t([^\t\n]*)\n^
-"$2": {\n\t"webname": "$1",\n\t"parameter": "$2",\n\t"desc": "$3"\n},\n
-*/
+function receiveEdamamData() {
 
+}
 
 const edamamResult = {
   "q" : "chicken",
