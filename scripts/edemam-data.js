@@ -105,17 +105,7 @@ function buildEdamamRequest() {
     getQuery += `&ingr=${maxIngred}`
   }
 
-  if(mealType.length > 0) {
-    getQuery += `&mealType=${mealType}`
-  }
-
-  if(healthLabel.length > 0) {
-    getQuery += `&health=${healthLabel}`
-  }
-
-  if(diet.length > 0) {
-    getQuery += `&diet=${diet}`
-  }
+  $('input:checked').forEach(element => getQuery += element.value)
 
   return url + getQuery
 }
