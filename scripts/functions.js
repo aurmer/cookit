@@ -29,13 +29,35 @@ function matchEdamamUniqueID(recipeID,hit){
 }
 
 
+function parseIntOrReturnZero(str) {
+  if (typeof str !== "string") {
+    str = this
+  }
 
-//create a variable that points straight to the recipe object.
+  if( isNaN(str) ) {
+    return 0
+  } else {
+    return parseInt(str)
+  }
+}
 
-function renderSingleRecipeCard(element) {
+String.prototype.parseIntOrReturnZero = parseIntOrReturnZero
 
-    let recipeID =  element.recipe.uri.split("_").pop();
+function printRange(min,max) {
+  let out_str = ""
 
-    return `<div class="recipe-card" data-recipeID="${recipeID}"><a href="${element.recipe.shareAs}"><img src="${element.recipe.image}"></a></div><br>
-    <button data-recipeID="${recipeID}" id="add-button">Add to Favorites</button>`
+  if(min > 0) {
+    out_str += min
+    if(max > 0) {
+      out_str += "-" + max
+    }
+    else {
+      out_str += "%2B"
+    }
+  }
+  else if(max > 0) {
+    out_str += max
+  }
+
+  return out_str
 }

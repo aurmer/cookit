@@ -67,23 +67,3 @@ function enableCalorieCount(){
         console.log(slider.value)
     }
 }
-
-
-//Array to hold parameters for search
-//**** need to create a function to clear this array or set it as undefined after "closing" the advanced search section****/
-
-advSearchParameters =[];
-
-//Function to add parameters to array
-//Looks for all boxes that are checked and inputs value in array.
-
-var addAdvSearchPar = function(){
-    $('input:checked').each(function(){
-        advSearchParameters.push($(this).val());
-        console.dir($(this).val());
-    });
-    $('#calorie-range').each(function(){
-        advSearchParameters.push($(this).val());
-    })
-
-}
