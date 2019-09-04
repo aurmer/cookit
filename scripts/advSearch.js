@@ -6,20 +6,37 @@ function getById(id){return document.getElementById(id);};
 
 function initializePage(){
 
-    console.dir(edemamResult)
+    console.dir(edamamEnumData)
 
-    var calorieSlider = getById("calorie-range");
-    var calorieOutput = getById("calorie-output");
-    calorieOutput.innerHTML = 'Calories: ' + calorieSlider.value;
+    // var calorieSlider = getById("calorie-range");
+    // var calorieOutput = getById("calorie-output");
+    // calorieOutput.innerHTML = 'Calories: ' + calorieSlider.value;
 
-    calorieSlider.oninput = function() {
-    calorieOutput.innerHTML = 'Calories: ' + this.value;
-    }
-    
+    // calorieSlider.oninput = function() {
+    // calorieOutput.innerHTML = 'Calories: ' + this.value;
+    // }
+    $( function() {
+        $( "#slider-range" ).slider({
+          orientation: "vertical",
+          max: 5000,
+          min: 0,
+          range: true,
+          values: [ 1000, 4000 ],
+          slide: function( event, ui ) {
+              $( "#max-amount" ).val(ui.values[ 1 ] + " Cal");
+              $( "#min-amount" ).val(ui.values[ 0 ] + " Cal");
+              //can use the same below value to output data to the search
+              console.log($( "#max-amount" ).val($( "#slider-range" ).slider( "values", 1 )))
+          }
+        });
+        var calorieRange = [$( "#slider-range" ).slider( "values", 1 ),
+        $( "#slider-range" ).slider( "values", 0 )]
 
-    let recipesHTML = edemamResult.hits.map(renderSingleRecipeCard).join('')
+        console.log(calorieRange)
 
-    document.querySelector('#recipes-container').innerHTML = recipesHTML
+        $( "#max-amount" ).val($( "#slider-range" ).slider( "values", 1 ) + " Cal")
+        $( "#min-amount" ).val($( "#slider-range" ).slider( "values", 0 ) + " Cal" );
+      } );
 }
 
 //Press the test button to add all items to an array
@@ -107,7 +124,7 @@ function saveToFavorites(recipeID){
 
     var favoritesList = JSON.parse(favoritesListJSON);
 
-    let favRecipe = $.grep(edemamResult.hits, function(item){
+    let favRecipe = $.grep(edamamEnumData.hits, function(item){
         let searchedRecipeID =  item.recipe.uri.split("_").pop();
 
         if (searchedRecipeID === recipeID) {
