@@ -9,17 +9,19 @@ function initializePage() {
 
 function clickSearch() {
   //runEdamamSearch()
-  switchIndexSection('search-results')
-  let resultsHTML = edamamResult.hits.map(element=>renderSingleRecipeCard(element.recipe)).join('')
+  switchIndexSection()
 
-  document.querySelector('#search-results div').innerHTML = resultsHTML
+  runEdamamSearch()
+
+  // let resultsHTML = edamamResult.hits.map(element=>renderSingleRecipeCard(element.recipe)).join('')
+  // document.querySelector('#search-results div').innerHTML = resultsHTML
 }
 
 function renderSingleRecipeCard(recipe) {
   return `<div class="column is-4">
       <div class="card is-shady">
           <div class="card-image">
-              <a href="/cookitCard.html">
+              <a href="recipe.html">
               <figure class="image is-4by3">
               <img src="${recipe.image}" class="modal-button" data-target="modal-image2">
               </figure> </a>
@@ -27,7 +29,11 @@ function renderSingleRecipeCard(recipe) {
       <div class="card-content">
           <div class="content">
               <h4 classs="recipe-title">${recipe.label}</h4>
-                  <p class="time">${recipe.healthLabels.reduce((a,st)=>a+"<span style='background-color:#eee;'>"+st+"</span>&nbsp;&nbsp;&nbsp;",'')}</p>
+                  <p class="time">
+                    ${recipe.healthLabels.reduce((a,st)=>
+                      a+"<span style='background-color:#eee;'>"+st+"</span>&nbsp;&nbsp;&nbsp;",'')
+                    }
+                  </p>
           </div>
       </div>
       </div>

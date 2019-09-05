@@ -2,13 +2,19 @@ const EDAMAM_APP_ID = "f6abb6f3"
 const EDAMAM_APP_KEY = "f7c310e699facfc88650ff8ad19f04b4"
 
 function buildEdamamRequest() {
-  const searchForm = document.querySelector('#search-form')
-  const mainQuery = searchForm.querySelector('#search-q').value
-  const minTime = searchForm.querySelector('#minTime').values[0]
-  const maxTime = searchForm.querySelector('#maxTime').values[1]
-  const minCal = searchForm.querySelector('#minCal').values[0]
-  const maxCal = searchForm.querySelector('#maxCal').values[1]
-  const maxIngred = searchForm.querySelector('#maxIngred').value.parseIntOrReturnZero()
+  //const searchForm = document.querySelector('#search-form')
+  const mainQuery = document.querySelector('#search-q').value
+  // const minTime = searchForm.querySelector('#minTime').values[0]
+  // const maxTime = searchForm.querySelector('#maxTime').values[1]
+  // const minCal = searchForm.querySelector('#minCal').values[0]
+  // const maxCal = searchForm.querySelector('#maxCal').values[1]
+  // const maxIngred = searchForm.querySelector('#maxIngred').value.parseIntOrReturnZero()
+
+  const minTime = ""
+  const maxTime = ""
+  const minCal = ""
+  const maxCal = ""
+  const maxIngred = ""
 
   let url = "https://api.edamam.com/search"
   let getQuery = `?app_key=${EDAMAM_APP_KEY}&app_id=${EDAMAM_APP_ID}&q=${mainQuery}`
@@ -44,7 +50,7 @@ function runEdamamSearch() {
 function handleEdamamData(result) {
   let recipeArray = extractRecipeArray(result)
 
-  //TODO finish
+  console.dir(recipeArray)
 }
 
 function extractRecipeArray(edamamResult) {
