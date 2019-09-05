@@ -41,9 +41,6 @@ $( function() {
             
             //Added event listeners for specified items that will be on the document
 
-
-console.dir($( "#slider-range" ).slider.value)
-
 document.addEventListener('click', function(event){
     let targetEl = event.target;
     if (targetEl.id === "search-button") {
