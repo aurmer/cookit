@@ -6,17 +6,33 @@ function getById(id){return document.getElementById(id);};
 
 function initializePage(){
 
+<<<<<<< HEAD
     console.dir(edamamEnumData)
+=======
+    console.dir(edamamResult)
+>>>>>>> master
 
     // var calorieSlider = getById("calorie-range");
     // var calorieOutput = getById("calorie-output");
     // calorieOutput.innerHTML = 'Calories: ' + calorieSlider.value;
 
+<<<<<<< HEAD
     // calorieSlider.oninput = function() {
     // calorieOutput.innerHTML = 'Calories: ' + this.value;
     // }
+=======
+    calorieSlider.oninput = function() {
+    calorieOutput.innerHTML = 'Calories: ' + this.value;
+    }
+
+
+    let recipesHTML = edamamResult.hits.map(renderSingleRecipeCard).join('')
+
+    document.querySelector('#recipes-container').innerHTML = recipesHTML
+>>>>>>> master
 }
 //Press the test button to add all items to an array
+<<<<<<< HEAD
 $( function() {
     $( "#slider-range" ).slider({
         orientation: "vertical",
@@ -40,11 +56,15 @@ $( function() {
             //I think this would be tied to the "Search" button on the search bar so it knows to check for items in the array to limit the search. 
             
             //Added event listeners for specified items that will be on the document
+=======
+//Array items would be used to search for matching parameters and filter the results.
+//I think this would be tied to the "Search" button on the search bar so it knows to check for items in the array to limit the search.
+>>>>>>> master
 
 console.dir($( "#slider-range" ).slider.value)
 
 document.addEventListener('click', function(event){
-    let targetEl = event.target;    
+    let targetEl = event.target;
     if (targetEl.id === "search-button") {
         addAdvSearchPar();
         console.dir(targetEl)
@@ -82,6 +102,7 @@ function enableCalorieCount(){
         console.log(slider.value)
     }
 }
+<<<<<<< HEAD
 
 
 //Array to hold parameters for search
@@ -140,3 +161,5 @@ function saveToFavorites(recipeID){
     localStorage.setItem("favoritesList", JSON.stringify(favoritesList));
 
 }
+=======
+>>>>>>> master
