@@ -10,20 +10,22 @@
     <!-- Bulma Version 0.7.5-->
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.5/css/bulma.min.css" />
     <link rel="stylesheet" type="text/css" href="style/cookit.css">
+    <script type="text/javascript" src="scripts/edemam-data.js"></script>
+    <script type="text/javascript" src="scripts/edemam-temp.js"></script>
 </head>
 
 <body>
-    <section class="hero is-info is-fullheight">
+    <section id="main-hero" class="hero is-info is-fullheight">
         <div class="hero-head">
             <nav class="navbar">
-                <div class="container">
-                    <span class="navbar-burger burger" data-target="navbarMenu">
+                <div id="nav-left" class="container">
+                    <!-- TODO decide <span class="navbar-burger burger" data-target="navbarMenu">
                         <span></span>
                         <span></span>
                         <span></span>
-                    </span>
+                    </span>-->
                     </div>
-                    <div id="navbarMenu" class="navbar-menu">
+                    <!--<div id="navbarMenu" class="navbar-menu">
                         <div class="navbar-end">
                             <span class="navbar-item">
                             <span class="navbar-item">
@@ -46,29 +48,34 @@
                                 </span>
                             </div>
                         </div>
-                </div>
+                </div>-->
             </nav>
             </div>
 
-            <div class="hero-body">
+            <section id="search-main" class="hero-body">
                 <div class="container has-text-centered">
-                    <div class="column is-6 is-offset-3">
+                    <div id="search-container" class="column is-6 is-offset-3">
                         <h1 class="title is-1">
                             Cook!t
                         </h1>
                             <div class="field is-grouped">
                                 <p class="control is-expanded">
-                                    <input class="input" type="text" placeholder="What's For Dinner ">
+                                    <input id="search-q" class="input" type="text" placeholder="What's For Dinner ">
                                 </p>
                                 <p class="control">
-                                    <a class="button is-success" href="/cookit2.html">
+                                    <a id="search-submit" class="button is-success">
                                         Cook!t
                                     </a>
                                 </p>
                             </div>
                     </div>
                 </div>
-            </div>
+            </section>
+            <section id="search-results" style="display:none;margin: 1em;">
+              <div class="columns features is-multiline">
+
+              </div>
+            </section>
 
     </section>
 </body>
