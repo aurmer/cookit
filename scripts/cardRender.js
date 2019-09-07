@@ -10,28 +10,48 @@ function initializePage(){
     
     // var favoritesList = JSON.parse(favoritesListJSON);
     
-    let favRecipe = edamamResult.hits[0].recipe
-    console.dir(favRecipe)
-    console.log(favRecipe.calories)
+    let currentRecipe = edamamResult.hits[0].recipe
+    let favsHTML = createRecipePage(currentRecipe)
+    // let cardMap = currentRecipe.map(recipeInfo)
+    let totalTime = Number(currentRecipe.totalTime)
 
+    function CookTime (totalTime) {
+        return moment.duration(totalTime, 'minutes').asHours().toFixed(1)
+    }
 
-    function createRecipePage (favRecipe) {
-        let favsHTML = favRecipe.map(recipeInfo)
+    function createRecipePage (currentRecipe) {
         {
+            console.dir(currentRecipe)
+            
+            let recipeIngredients = currentRecipe.ingredients            
+                
+                let ingredientsList = recipeIngredients.map(function(ingredient){
+        
+                    return `
+                        <li>${ingredient.text}</li><br>
+                    `
+                })
+                console.dir(ingredientsList)
+                // return ingredientsList.join("")
+                
+            
             return `
             <div class="tile is-horizontal is-parent">
             <div class="tile is-child box">
             <p class="title">Ingredients</p>
             <ul id="ingredients">
             </ul>
-            ${recipeInfo.calories}
+            ${ingredientsList.join("")}
             </div>
             
-            
-            <div class="tile is-parent is-10">
             <div class="tile is-child box">
-            <p class="recipe-title">Name of Recipes</p>
-            <p class="subtitle" id="cook-time">Cook!t Time 00:00</p>
+            <div class="card-image">
+                <figure class="image is-4by6">
+                <img src="${currentRecipe.image}" class="modal-button">
+                </figure>
+            </div>
+            <p class="recipe-title">${currentRecipe.label}</p>
+            <p class="subtitle" id="cook-time">Cook!t Time: ${CookTime(currentRecipe.totalTime)} Hours</p>
             <p>Additional Information</p>
             </div>
             </div>
@@ -41,9 +61,9 @@ function initializePage(){
         }
         return favsHTML.join("")
     }
-
-
      
+    
+
     function getById(id)
     {
         return document.getElementById(id);
