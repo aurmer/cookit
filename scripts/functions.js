@@ -1,32 +1,31 @@
 
 //TODO don't add duplicate favorites
 
-function saveToFavorites(recipeID){
+// function saveToFavorites(recipeID){
 
-    var favoritesListJSON = localStorage.getItem('favoritesList');
+//     var favoritesListJSON = localStorage.getItem('favoritesList');
 
-    var favoritesList = JSON.parse(favoritesListJSON);
+//     var favoritesList = JSON.parse(favoritesListJSON);
 
-    let favRecipe = edamamResult.hits.find(matchEdamamUniqueID.bind(null,recipeID)).recipe
+//     let favRecipe = edamamResult.hits.find(matchEdamamUniqueID.bind(null,recipeID)).recipe
 
-    if (favoritesList === null){
-        favoritesList = [];
-    }
+//     if (favoritesList === null){
+//         favoritesList = [];
+//     }
 
-    favoritesList.push(favRecipe)
+//     favoritesList.push(favRecipe)
 
-    localStorage.setItem("favoritesList", JSON.stringify(favoritesList));
+//     localStorage.setItem("favoritesList", JSON.stringify(favoritesList));
+// }
 
-}
+// function matchEdamamUniqueID(recipeID,hit){
+//     let searchedRecipeID =  hit.recipe.uri.split("_").pop();
 
-function matchEdamamUniqueID(recipeID,hit){
-    let searchedRecipeID =  hit.recipe.uri.split("_").pop();
-
-    if (searchedRecipeID === recipeID) {
-        console.dir(Array.isArray(hit.recipe))
-        return true
-    }
-}
+//     if (searchedRecipeID === recipeID) {
+//         console.dir(Array.isArray(hit.recipe))
+//         return true
+//     }
+// }
 
 
 function parseIntOrReturnZero(str) {
