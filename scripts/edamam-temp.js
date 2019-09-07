@@ -18,27 +18,26 @@ function clickSearch() {
 }
 
 function renderSingleRecipeCard(recipe) {
-  return `<div class="column is-4">
-      <div class="card is-shady">
-          <div class="card-image">
-              <a onclick='prepRecipePage("${recipe.uri}");window.location.href = "recipe.html"'>
-              <figure class="image is-4by3">
-              <img src="${recipe.image}" class="modal-button" data-target="modal-image2">
-              </figure> </a>
-          </div>
+  return `<div class="column is-3">
+  <div class="card is-shady">
+      <div class="card-image">
+          <a href="/cookitCard.html">
+          <figure class="image is-4by6">
+          <img src="${recipe.image}" class="modal-button" data-target="modal-image2">
+          </figure> </a>
+      </div>
       <div class="card-content">
           <div class="content">
-              <h4 classs="recipe-title">${recipe.label}</h4>
-                  <p class="time">
-                    ${recipe.healthLabels.reduce((a,st)=>
-                      a+"<span style='background-color:#eee;'>"+st+"</span>&nbsp;&nbsp;&nbsp;",'')
-                    }
-                  </p>
+          <div class="is-flex" style="justify-content: space-between;>
+              <h4 classs="recipe-title title is-1"><strong>${recipe.label}</strong></h4>
+              <div id="add-button" class="button is-success is-small"> Add </div>
+          </div>
+              <p class="time">${recipe.healthLabels.reduce((a,st)=>a+"<span style='background-color:#eee;'>"+st+"</span>&nbsp;&nbsp;&nbsp;",'')}</p>
           </div>
       </div>
-      </div>
-  </div>`
-}
+  </div>
+ </div>`
+ }
 
 function switchIndexSection(section) {
   let searchContainer = document.querySelector('#search-container')

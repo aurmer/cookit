@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cook!t</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Bulma Version 0.7.5-->
+        <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.5/css/bulma.min.css" />
+        <link rel="stylesheet" href="style/cookit.css">
+        <script src="scripts/functions.js"></script>
+        <script src="scripts/edamamFunctions.js"></script>
+        <script src="scripts/edemam-data.js"></script>
+        <script src="scripts/cardRender.js"></script>
+
+    </head>
+</head>
+<body>
+  <header>
+            <!-- header / nav -->
+    <nav class="navbar is-info">
+        <div class="container">
+            <div class="navbar-brand">
+                <span class="navbar-burger burger" data-target="navbarMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+                </span>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item is-active" href="/cookit.html">
+                            Home
+                    </a>
+                    <a class="navbar-item">
+                            About Us
+                    </a>
+                    <a class="navbar-item">
+                            Contact Us
+                    </a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                                User
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item">
+                                    Profile
+                                </a>
+                            <hr class="navbar-divider">
+                            <div class="navbar-item">
+                                Logout
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+  </header>
+<!-- nav back to recipe results -->
+  
+  <section class="hero is-info">
+      <div class="tabs is-boxed is-centered main-menu" id="nav">
+          <ul>
+              <li data-target="pane-1" id="1">
+                  <a href="/cookit2.html"> <span>Recipe Results</span></a>
+              </li>
+              <li data-target="pane-2" id="2" class="is-active">
+                  <a><span>Article</span></a>
+              </li>
+              <li data-target="pane-3" id="3">
+                  <a><span>Nutrition Facts</span></a>
+              </li>
+          </ul>
+      </div>
+      </section>
+
+  <!-- recipe card -->
+  <div id="recipe-content"class="is-ancestor container box">
+  </div>
+
+
+</body>
+</html>

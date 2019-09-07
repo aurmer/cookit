@@ -1,13 +1,13 @@
-document.addEventListener('DOMContentLoaded',initializePage)
-function getById(id){return document.getElementById(id);};
+// document.addEventListener('DOMContentLoaded',initializePage)
+// function getById(id){return document.getElementById(id);};
 
-function initializePage(){
+// function initializePage(){
 
 
-}
+// }
 
-function getURI (){
-    let recipeID =  edemamResult.uri.split("_").shift();
-    console.log(recipeID)
-}
+// function getURI (){
+//     let recipeID =  edemamResult.uri.split("_").shift();
+//     console.log(recipeID)
+// }
 
