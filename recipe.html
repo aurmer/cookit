@@ -7,13 +7,6 @@
         <!-- Bulma Version 0.7.5-->
         <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.5/css/bulma.min.css" />
         <link rel="stylesheet" href="style/cookit.css">
-        <script src="scripts/functions.js"></script>
-        <script src="scripts/edamamFunctions.js"></script>
-        <script src="scripts/edemam-data.js"></script>
-        <script src="scripts/cardRender.js"></script>
-        <script src="scripts/moment.min.js"></script>
-        <link rel="stylesheet" href="style/cookit.css">
-
 
     </head>
 </head>
@@ -60,7 +53,7 @@
     </nav>
   </header>
 <!-- nav back to recipe results -->
-  
+
   <section class="hero is-info">
       <div class="tabs is-boxed is-centered main-menu" id="nav">
           <ul>
@@ -78,9 +71,28 @@
       </section>
 
   <!-- recipe card -->
-  <div id="recipe-content"class="is-ancestor container box">
-  </div>
+  <div class="is-ancestor container box">
+      <div class="tile is-horizontal is-parent">
+        <div class="tile is-child box">
+          <p class="title">Ingredients</p>
+          <ul>
+            <li>1lb something</li>
+            <li>2/3cup something</li>
+            <li>1/2 of something</li>
+          </ul>
+        </div>
 
+
+    <div class="tile is-parent is-10 ">
+        <div class="tile is-child box">
+          <p class="title">Recipe Name</p>
+          <p class="subtitle">Cook!t Time 00:00</p>
+          <p>Step 1) <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
+          <p>Suspendisse varius ligula in molestie lacinia. Maecenas varius eget ligula a sagittis. Pellentesque interdum, nisl nec interdum maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat. Maecenas imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Aenean vitae gravida diam, finibus dignissim turpis. Sed eget varius ligula, at volutpat tortor.</p>
+        </div>
+    </div>
+    </div>
+  </div>
 
 </body>
 </html>

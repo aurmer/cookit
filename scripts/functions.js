@@ -27,6 +27,11 @@
 //     }
 // }
 
+function prepRecipePage(recipe) {
+  //TODO just request it here to simplify
+  localStorage.setItem("recipe", JSON.stringify(recipe))
+}
+
 
 function parseIntOrReturnZero(str) {
   if (typeof str !== "string") {

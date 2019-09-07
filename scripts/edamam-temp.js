@@ -9,17 +9,19 @@ function initializePage() {
 
 function clickSearch() {
   //runEdamamSearch()
-  switchIndexSection('search-results')
-  let resultsHTML = edamamResult.hits.map(element=>renderSingleRecipeCard(element.recipe)).join('')
+  switchIndexSection()
 
-  document.querySelector('#search-results div').innerHTML = resultsHTML
+  runEdamamSearch()
+
+  // let resultsHTML = edamamResult.hits.map(element=>renderSingleRecipeCard(element.recipe)).join('')
+  // document.querySelector('#search-results div').innerHTML = resultsHTML
 }
 
 function renderSingleRecipeCard(recipe) {
   return `<div class="column is-3">
   <div class="card is-shady">
       <div class="card-image">
-          <a href="/cookitCard.html">
+          <a onclick='prepRecipePage(\"${recipe.uri}\");document.location.href = "cookitCard.html"'>
           <figure class="image is-4by6">
           <img src="${recipe.image}" class="modal-button" data-target="modal-image2">
           </figure> </a>
