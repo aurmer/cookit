@@ -41,6 +41,13 @@ This is our Phase 1 final project. The assignment is to utilize multiple APIs to
 -  Edamam API didn't behave as we expected. Some of their database seems incomplete and we had to adjust course for each time we found an unexpected result. We are finding that full vetting of API's should occur AS SOON AS POSSIBLE so there is time to adjust project scope.
 -  We assumed we would be get a recipe procedure from the database, but we had to settle for linking the user out to another page.
 
+## Known Issues
+
+-  The individual recipe page depends on an API call. This could be greatly improved with some basic caching of the information from the main page search. This would allow the recipe page to load instantaneously as well as reduce the number of API calls (API subscription cost) per user session.
+- Another feature would that could have helped with the above issue would be to add a loading bar to the page to show that content is in progress of loading.
+- Need better communication in regards to what we were working on and where. Making sure what we can do can be integrated easily into the main functions of our pages.
+-  Ultimately, we would want to keep the user on our site rather than linking out to another website to get the actual recipe. This Edamam API has turned up lacking in this respect, and given more time, we would shop around for a higher quality database to pull from.
+
 ## Final Thoughts
 
 -  Project management is a difficult task. We all have our own vision of what the project should look like, and it was difficult to stay on the same page while agreeing on what is the top priority.
