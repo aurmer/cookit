@@ -1,6 +1,11 @@
 const EDAMAM_APP_ID = "f6abb6f3"
 const EDAMAM_APP_KEY = "f7c310e699facfc88650ff8ad19f04b4"
 
+const HITS_PER_REQUEST = 36
+
+let queryPage = 0
+let queryPending = false
+
 function buildEdamamRequest() {
   //const searchForm = document.querySelector('#search-form')
   const mainQuery = document.querySelector('#search-q').value
@@ -16,8 +21,11 @@ function buildEdamamRequest() {
   const maxCal = ""
   const maxIngred = ""
 
+  const fromIdx = queryPage * HITS_PER_REQUEST
+  const toIdx = queryPage * HITS_PER_REQUEST + HITS_PER_REQUEST
+
   let url = "https://api.edamam.com/search"
-  let getQuery = `?app_key=${EDAMAM_APP_KEY}&app_id=${EDAMAM_APP_ID}&q=${mainQuery}`
+  let getQuery = `?app_id=${EDAMAM_APP_ID}&app_key=${EDAMAM_APP_KEY}&q=${mainQuery}&from=${fromIdx}&to=${toIdx}`
 
 
   if(minTime > 0 || maxTime > 0) {
@@ -38,19 +46,35 @@ function buildEdamamRequest() {
   return url + getQuery
 }
 
-function runEdamamSearch() {
+function runEdamamSearch(appendFlag) {
   let requestURL = buildEdamamRequest()
+  console.log('~~~ Sending API request to Edamam ~~~')
 
+  queryPending = true
   let myRequest = $.getJSON({
     url: requestURL,
-    success: handleEdamamData
+    success: handleEdamamData.bind(null,appendFlag)
   })
 }
 
-function handleEdamamData(result) {
-  let recipeArray = extractRecipeArray(result)
+function handleEdamamData(appendFlag,result) {
+  queryPending = false
+  console.log(`~~~ Received response from Edamam ${queryPage} ~~~`)
 
-  console.dir(recipeArray)
+  const recipeArray = extractRecipeArray(result)
+  const resultsHTML = recipeArray.map(element=>renderSingleRecipeCard(element)).join('')
+
+  const resultsDIV = document.querySelector('#search-results div')
+  if(appendFlag === true) {
+    /* This is for the infinite scroll feature which isn't complete
+    let temp = document.createElement('template')
+    temp.innerHTML = resultsHTML
+    resultsDIV.appendChild = temp
+    */
+  } else {
+    resultsDIV.innerHTML = resultsHTML
+  }
+
 }
 
 function extractRecipeArray(edamamResult) {
@@ -65,3 +89,22 @@ function returnRecipe(element) {
 function receiveEdamamData() {
 
 }
+/* Incomplete feature -- infinite scroll
+window.addEventListener('scroll', _.throttle(endlessScroll, 1000));
+
+function endlessScroll() {
+  if(queryPending === false) {
+    const scrollY = window.scrollY
+    const windowHeight = window.innerHeight
+    const docHeight = $(document).height()
+
+    console.log(`${scrollY} <> ${docHeight} - ${windowHeight} - 300}`)
+
+    if(scrollY > docHeight - windowHeight - 300) {
+      queryPending = true
+      queryPage += 1
+
+      runEdamamSearch(true)
+    }
+  }
+} */

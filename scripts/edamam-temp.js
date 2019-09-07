@@ -21,7 +21,7 @@ function renderSingleRecipeCard(recipe) {
   return `<div class="column is-4">
       <div class="card is-shady">
           <div class="card-image">
-              <a href="recipe.html">
+              <a onclick='prepRecipePage("${recipe.uri}");window.location.href = "recipe.html"'>
               <figure class="image is-4by3">
               <img src="${recipe.image}" class="modal-button" data-target="modal-image2">
               </figure> </a>
