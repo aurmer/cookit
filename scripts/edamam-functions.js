@@ -1,7 +1,7 @@
 const EDAMAM_APP_ID = "f6abb6f3"
 const EDAMAM_APP_KEY = "f7c310e699facfc88650ff8ad19f04b4"
 
-const HITS_PER_REQUEST = 36
+const HITS_PER_REQUEST = 96
 
 let queryPage = 0
 let queryPending = false
